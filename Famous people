@@ -1,0 +1,40 @@
+/* In this project, you’re going to make your own table with some small set of “famous people”, 
+then make more tables about things they do and join those to create nice human readable lists.
+ */
+
+CREATE TABLE MovieStars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    spouse TEXT);
+    
+
+INSERT INTO moviestars (id, name, spouse)
+VALUES
+  (1, 'Tom Hanks', 'Rita Wilson'),
+  (2, 'Leonardo DiCaprio', NULL),
+  (3, 'Jennifer Lawrence', NULL),
+  (4, 'Brad Pitt', 'Angelina Jolie, Jennifer Aniston'),
+  (5, 'Scarlett Johansson', NULL);
+  
+CREATE TABLE Movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  star_id INTEGER,
+  title TEXT);
+
+INSERT INTO Movies (id, star_id, title)
+VALUES
+  (1, 1, 'Forrest Gump'),
+  (2, 1, 'Cast Away'),
+  (3, 2, 'Titanic'),
+  (4, 2, 'Inception'),
+  (5, 3, 'The Hunger Games'),
+  (6, 4, 'Fight Club'),
+  (7, 4, 'Ocean''s Eleven'),
+  (8, 5, 'Lost in Translation'),
+  (9, 5, 'The Avengers');
+  
+
+SELECT MovieStars.name, Movies.title
+FROM MovieStars
+JOIN Movies ON MovieStars.id = Movies.star_id;
+
